@@ -3,7 +3,7 @@
 ### What is this ?
 
 This is a rather simple pet Project for a HR application that can do CRUD operations on documents stored in a MongoDB database.
-
+The goal is to help recruitment process and manage candidates
 
 ### What's needed
 
@@ -12,12 +12,12 @@ This API runs on node.js, and makes use of the following:
 - [Express](https://github.com/visionmedia/express) - node.js framework that handles routing
 - [MongoDB](http://mongodb.com) - NoSQL database that holds our data
 - [Mongoose](http://mongoosejs.com/) - ODM (object data mapping) layer, translates your data into JavaScript objects so you can work with them easier.
-
+- [Docco](http://ashkenas.com/docco/) - Quick-and-dirty documentation generator using comments.
 ### Get started
 
 Clone this project (or download the zip file), then run ```npm install``` to install the dependencies.
 
-Next you'll want to create your own "config.js" file. There's a file in the project called "config.js" that you can copy to "config-template.js", and modify it to include the connection string to your database.
+Next you'll want to create your own "config.js" file. There's a file in the project called "config-template.js" that you can copy to "config-template.js", and modify it to include the connection string to your database.
 
 The file will look like the one below. Just replace the dummy connection string with the real one you'll be using.
 
@@ -35,7 +35,9 @@ Now, startup up server with the command `node app.js`, and you should see the me
 	Server is listening on port 3000
     Successfully connected to the database
 
-If you don't see those messages, double check the connection string to your database in your config file, and make sure the file is called "config.js" and not "config.js".
+If you don't see those messages, double check the connection string to your database in your config file, and make sure the file is called "config.js" and not "config-template.js".
+
+The quick documentation of the source code is available in the docs/ folder (Docco produces HTML files).
 
 ### The data
 
