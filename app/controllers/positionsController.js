@@ -3,15 +3,15 @@ const Position = require('../models/positionsModel.js');
 // Create a new Position
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.content) {
+    if (!req.body) {
         return res.status(400).send({
-            message: "Position content can not be empty"
+            message: "Position body can not be empty.
         });
     }
 
     // Create a Position
     const position = new Position({
-        name: req.body.title,
+        name: req.body.name,
         tags: req.body.tags,
         description: req.body.description,
         status: req.body.status
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
             res.send(data);
         }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the Position."
+            message: err.message || "Some error occurred while creating the position."
         });
     });
 };
@@ -111,7 +111,7 @@ exports.delete = (req, res) => {
             });
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.positionId
+            message: "Could not delete position with id " + req.params.positionId
         });
     });
 };
