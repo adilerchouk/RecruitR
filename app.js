@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Create express app
 const app = express();
@@ -32,7 +33,8 @@ app.get('/', (req, res) => {
 });
 
 // Define routes
-require('./app/routes/positionsRoutes.js')(app);
+require('./app/routes/positionRoutes.js')(app);
+require('./app/routes/applicantRoutes.js')(app);
 
 // Listen for requests
 app.listen(3000, () => {

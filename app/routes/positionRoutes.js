@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const positions = require('../controllers/positionsController.js');
+    const positions = require('../controllers/positionController.js');
 
     // Create a new Position
     app.post('/positions', positions.create);
@@ -7,7 +7,7 @@ module.exports = (app) => {
     // Retrieve all Positions
     app.get('/positions', positions.findAll);
 
-    // Retrieve a single Position with poteId
+    // Retrieve a single Position with position>Id
     app.get('/positions/:positionId', positions.findOne);
 
     // Update a Position with positionId

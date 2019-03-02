@@ -61,7 +61,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.use(bodyParser.urlencoded({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> }));</pre></div></div>
+            <div class="content"><div class='highlight'><pre>app.use(bodyParser.urlencoded({<span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span>}));</pre></div></div>
             
         </li>
         
@@ -110,9 +110,9 @@ mongoose.Promise = global.Promise;</pre></div></div>
             </div>
             
             <div class="content"><div class='highlight'><pre>mongoose.connect(dbConfig.url, {
-	<span class="hljs-attr">useNewUrlParser</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">useNewUrlParser</span>: <span class="hljs-literal">true</span>
 }).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Successfully connected to the database"</span>);    
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Successfully connected to the database"</span>);
 }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Could not connect to the database. Exiting now...'</span>, err);
     process.exit();
@@ -148,7 +148,7 @@ mongoose.Promise = global.Promise;</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./app/routes/positionsRoutes.js'</span>)(app);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./app/routes/positionRoutes.js'</span>)(app);</pre></div></div>
             
         </li>
         

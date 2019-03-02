@@ -55,43 +55,61 @@ positions:
 
 [
     {
-        "tags": [
+        "skills": [
             "IT",
             "Java",
             "MongoDB"
         ],
-        "_id": "5c77b4b0b43a7d0c673e12a9",
         "name": "Software developer",
         "description": "A software developer position",
         "status": "Available"
     },
     {
-        "tags": [
+        "skills": [
             "HR",
             "Communication"
         ],
-        "_id": "5c77b4f9b43a7d0c673e12cd",
         "name": "HR Assistant",
         "description": "A HR assistant position",
         "status": "Available"
     },
     {
-        "tags": [
+        "skills": [
             "IT",
             "Data",
             "MongoDB"
         ],
-        "_id": "5c77cfbcc185e52a8ec198ed",
         "name": "Data scientist",
         "description": "A data scientist position",
-        "status": "Available",
-        "__v": 0
+        "status": "Available"
     }
 ]
 ```
 ```
-users:
+applicant:
 
 [
+    {
+        "skills": [
+            "Management",
+            "HR"
+        ],
+        "email": "email@company.com",
+        "firstName": "John",
+        "lastName": "DOE",
+        "linkedIn": "https://linkedin.com/johndoe",
+        "angelList": "johndoe12"
+    },
+    {
+        "skills": [
+            "IT",
+            "Java"
+        ],
+        "email": "tomboe@company.com",
+        "firstName": "Johnny",
+        "lastName": "BOE",
+        "linkedIn": "https://linkedin.com/tomboe",
+        "angelList": "tomboe3"
+    }
 ]
 ```

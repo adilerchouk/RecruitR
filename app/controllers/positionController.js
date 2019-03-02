@@ -1,4 +1,4 @@
-const Position = require('../models/positionsModel.js');
+const Position = require('../models/positionModel.js');
 
 // Create a new Position
 exports.create = (req, res) => {
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     // Create a Position
     const position = new Position({
         name: req.body.name,
-        tags: req.body.tags,
+        skills: req.body.skills,
         description: req.body.description,
         status: req.body.status
     });
@@ -62,7 +62,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a note identified by the noteId in the request
+// Update a position identified by the positionId in the request
 exports.update = (req, res) => {
     // Validate Request
     if (!req.body) {

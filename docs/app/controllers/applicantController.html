@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>positionController.js</title>
+  <title>applicantController.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" media="all" href="../../docco.css" />
@@ -19,12 +19,12 @@
           <div id="jump_page">
             
               
-              <a class="source" href="applicantsController.html">
+              <a class="source" href="applicantController.html">
                 applicantController.js
               </a>
             
               
-              <a class="source" href="positionsController.html">
+              <a class="source" href="positionController.html">
                 positionController.js
               </a>
             
@@ -44,7 +44,7 @@
               </a>
             
               
-              <a class="source" href="../routes/positionsRoutes.html">
+              <a class="source" href="../routes/positionRoutes.html">
                 positionRoutes.js
               </a>
             
@@ -56,7 +56,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>positionController.js</h1>
+                  <h1>applicantController.js</h1>
               </div>
           </li>
         
@@ -71,7 +71,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> Position = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/positionModel.js'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> Applicant = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/applicantModel.js'</span>);</pre></div></div>
             
         </li>
         
@@ -82,7 +82,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Create a new Position</p>
+              <p>Create a new applicant</p>
 
             </div>
             
@@ -103,7 +103,7 @@
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!req.body) {
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Position body can not be empty."</span>
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant body can not be empty."</span>
         });
     }</pre></div></div>
             
@@ -116,15 +116,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Create a Position</p>
+              <p>Create an applicant</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> position = <span class="hljs-keyword">new</span> Position({
-        <span class="hljs-attr">name</span>: req.body.name,
-        <span class="hljs-attr">tags</span>: req.body.tags,
-        <span class="hljs-attr">description</span>: req.body.description,
-        <span class="hljs-attr">status</span>: req.body.status
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> applicant = <span class="hljs-keyword">new</span> Applicant({
+        <span class="hljs-attr">email</span>: req.body.email,
+        <span class="hljs-attr">firstName</span>: req.body.firstName,
+        <span class="hljs-attr">lastName</span>: req.body.lastName,
+        <span class="hljs-attr">linkedIn</span>: req.body.linkedIn,
+        <span class="hljs-attr">angelList</span>: req.body.angelList,
+        <span class="hljs-attr">skills</span>: req.body.skills
     });</pre></div></div>
             
         </li>
@@ -136,16 +138,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Save Position in the database</p>
+              <p>Save applicant in the database</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    position.save()
+            <div class="content"><div class='highlight'><pre>    applicant.save()
         .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
             res.send(data);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while creating the position."</span>
+            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while creating the applicant."</span>
         });
     });
 };</pre></div></div>
@@ -159,17 +161,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Retrieve and return all positions from the database.</p>
+              <p>Retrieve and return all applicants from the database.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.findAll = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-    Position.find()
-        .then(<span class="hljs-function"><span class="hljs-params">positions</span> =&gt;</span> {
-            res.send(positions);
+    Applicant.find()
+        .then(<span class="hljs-function"><span class="hljs-params">applicants</span> =&gt;</span> {
+            res.send(applicants);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while retrieving positions."</span>
+            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while retrieving applicants."</span>
         });
     });
 };</pre></div></div>
@@ -183,27 +185,27 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Find a single position with a positionId</p>
+              <p>Find a single applicant with a applicantId</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.findOne = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-    Position.findById(req.params.positionId)
-        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!position) {
+    Applicant.findById(req.params.applicantId)
+        .then(<span class="hljs-function"><span class="hljs-params">applicant</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!applicant) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
                 });
             }
-            res.send(position);
+            res.send(applicant);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error retrieving position with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error retrieving applicant with id "</span> + req.params.applicantId
         });
     });
 };</pre></div></div>
@@ -217,7 +219,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Update a position identified by the positionId in the request</p>
+              <p>Update a applicant identified by the applicantId in the request</p>
 
             </div>
             
@@ -238,7 +240,7 @@
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!req.body) {
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Position content can not be empty"</span>
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant content can not be empty"</span>
         });
     }</pre></div></div>
             
@@ -255,24 +257,24 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    Position.findByIdAndUpdate(req.params.positionId,
+            <div class="content"><div class='highlight'><pre>    Applicant.findByIdAndUpdate(req.params.applicantId,
         {<span class="hljs-attr">$set</span>: req.body}
         , {<span class="hljs-attr">new</span>: <span class="hljs-literal">true</span>})
-        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!position) {
+        .then(<span class="hljs-function"><span class="hljs-params">applicant</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!applicant) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
                 });
             }
-            res.send(position);
+            res.send(applicant);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error updating position with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error updating applicant with id "</span> + req.params.applicantId
         });
     });
 };</pre></div></div>
@@ -286,27 +288,27 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Delete a position with the specified positionId in the request</p>
+              <p>Delete a applicant with the specified applicantId in the request</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.delete = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-    Position.findByIdAndRemove(req.params.positionId)
-        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!position) {
+    Applicant.findByIdAndRemove(req.params.applicantId)
+        .then(<span class="hljs-function"><span class="hljs-params">applicant</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!applicant) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
                 });
             }
-            res.send({<span class="hljs-attr">message</span>: <span class="hljs-string">"Position deleted successfully!"</span>});
+            res.send({<span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant deleted successfully!"</span>});
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span> || err.name === <span class="hljs-string">'NotFound'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
-                <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Could not delete position with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Could not delete applicant with id "</span> + req.params.applicantId
         });
     });
 };</pre></div></div>

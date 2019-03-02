@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>positionRoutes.js</title>
+  <title>applicantRoutes.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" media="all" href="../../docco.css" />
@@ -19,12 +19,12 @@
           <div id="jump_page">
             
               
-              <a class="source" href="../controllers/applicantsController.html">
+              <a class="source" href="../controllers/applicantController.html">
                 applicantController.js
               </a>
             
               
-              <a class="source" href="../controllers/positionsController.html">
+              <a class="source" href="../controllers/positionController.html">
                 positionController.js
               </a>
             
@@ -44,7 +44,7 @@
               </a>
             
               
-              <a class="source" href="positionsRoutes.html">
+              <a class="source" href="positionRoutes.html">
                 positionRoutes.js
               </a>
             
@@ -56,7 +56,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>positionRoutes.js</h1>
+                  <h1>applicantRoutes.js</h1>
               </div>
           </li>
         
@@ -72,7 +72,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">app</span>) =&gt;</span> {
-    <span class="hljs-keyword">const</span> positions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/positionController.js'</span>);</pre></div></div>
+    <span class="hljs-keyword">const</span> applicants = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/applicantController.js'</span>);</pre></div></div>
             
         </li>
         
@@ -83,11 +83,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Create a new Position</p>
+              <p>Create a new Applicant</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.post(<span class="hljs-string">'/positions'</span>, positions.create);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.post(<span class="hljs-string">'/applicants'</span>, applicants.create);</pre></div></div>
             
         </li>
         
@@ -98,11 +98,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Retrieve all Positions</p>
+              <p>Retrieve all Applicants</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions'</span>, positions.findAll);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/applicants'</span>, applicants.findAll);</pre></div></div>
             
         </li>
         
@@ -113,11 +113,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Retrieve a single Position with positionId</p>
+              <p>Retrieve a single Applicant with applicantId</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId'</span>, positions.findOne);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/applicants/:applicantId'</span>, applicants.findOne);</pre></div></div>
             
         </li>
         
@@ -128,11 +128,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Update a Position with positionId</p>
+              <p>Update an Applicant with applicantId</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.put(<span class="hljs-string">'/positions/:positionId'</span>, positions.update);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.put(<span class="hljs-string">'/applicants/:applicantId'</span>, applicants.update);</pre></div></div>
             
         </li>
         
@@ -143,11 +143,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Delete a Position with positionId</p>
+              <p>Delete an Applicant with applicantId</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/positions/:positionId'</span>, positions.delete);
+            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/applicants/:applicantId'</span>, applicants.delete);
 };</pre></div></div>
             
         </li>
