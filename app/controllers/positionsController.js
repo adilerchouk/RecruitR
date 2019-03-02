@@ -5,7 +5,7 @@ exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
         return res.status(400).send({
-            message: "Position body can not be empty.
+            message: "Position body can not be empty."
         });
     }
 
