@@ -15,4 +15,7 @@ module.exports = (app) => {
 
     // Delete an Applicant with applicantId
     app.delete('/applicants/:applicantId', applicants.delete);
+
+    // Retrieve Applicants of a Position with positionId
+    app.get('/positions/:positionId/applicants',applicants.findAllApplicantsByPositionId)
 };

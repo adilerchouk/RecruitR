@@ -29,6 +29,11 @@
               </a>
             
               
+              <a class="source" href="../controllers/recruiterController.html">
+                recruiterController.js
+              </a>
+            
+              
               <a class="source" href="../models/applicantModel.html">
                 applicantModel.js
               </a>
@@ -39,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="../models/recruiterModel.html">
+                recruiterModel.js
+              </a>
+            
+              
               <a class="source" href="applicantRoutes.html">
                 applicantRoutes.js
               </a>
@@ -46,6 +56,11 @@
               
               <a class="source" href="positionRoutes.html">
                 positionRoutes.js
+              </a>
+            
+              
+              <a class="source" href="recruiterRoutes.html">
+                recruiterRoutes.js
               </a>
             
           </div>
@@ -147,7 +162,22 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/applicants/:applicantId'</span>, applicants.delete);
+            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/applicants/:applicantId'</span>, applicants.delete);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Retrieve Applicants of a Position with positionId</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId/applicants'</span>,applicants.findAllApplicantsByPositionId)
 };</pre></div></div>
             
         </li>

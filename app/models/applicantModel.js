@@ -20,7 +20,8 @@ const ApplicantSchema = new mongoose.Schema({
     },
     linkedIn: String,
     angelList: String,
-    skills: [String]
+    skills: [String],
+    applications: [String]
 });
 
 // Export the Applicant model

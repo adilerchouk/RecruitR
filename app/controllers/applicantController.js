@@ -16,7 +16,8 @@ exports.create = (req, res) => {
         lastName: req.body.lastName,
         linkedIn: req.body.linkedIn,
         angelList: req.body.angelList,
-        skills: req.body.skills
+        skills: req.body.skills,
+        applications: req.body.applications
     });
 
     // Save applicant in the database
@@ -114,6 +115,20 @@ exports.delete = (req, res) => {
         }
         return res.status(500).send({
             message: "Could not delete applicant with id " + req.params.applicantId
+        });
+    });
+};
+
+// Retrieve Applicants with positionId
+
+exports.findAllApplicantsByPositionId = (req, res) => {
+    var positionId = req.path.substring(11,35);
+    Applicant.find({applications: positionId})
+        .then(applicants => {
+            res.send(applicants);
+        }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving applicants."
         });
     });
 };

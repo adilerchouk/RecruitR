@@ -29,6 +29,11 @@
               </a>
             
               
+              <a class="source" href="recruiterController.html">
+                recruiterController.js
+              </a>
+            
+              
               <a class="source" href="../models/applicantModel.html">
                 applicantModel.js
               </a>
@@ -39,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="../models/recruiterModel.html">
+                recruiterModel.js
+              </a>
+            
+              
               <a class="source" href="../routes/applicantRoutes.html">
                 applicantRoutes.js
               </a>
@@ -46,6 +56,11 @@
               
               <a class="source" href="../routes/positionRoutes.html">
                 positionRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../routes/recruiterRoutes.html">
+                recruiterRoutes.js
               </a>
             
           </div>
@@ -126,7 +141,8 @@
         <span class="hljs-attr">lastName</span>: req.body.lastName,
         <span class="hljs-attr">linkedIn</span>: req.body.linkedIn,
         <span class="hljs-attr">angelList</span>: req.body.angelList,
-        <span class="hljs-attr">skills</span>: req.body.skills
+        <span class="hljs-attr">skills</span>: req.body.skills,
+        <span class="hljs-attr">applications</span>: req.body.applications
     });</pre></div></div>
             
         </li>
@@ -309,6 +325,33 @@
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
             <span class="hljs-attr">message</span>: <span class="hljs-string">"Could not delete applicant with id "</span> + req.params.applicantId
+        });
+    });
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Retrieve Applicants with positionId</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+exports.findAllApplicantsByPositionId = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    <span class="hljs-keyword">var</span> positionId = req.path.substring(<span class="hljs-number">11</span>,<span class="hljs-number">35</span>);
+    <span class="hljs-built_in">console</span>.log(positionId);
+    Applicant.find({<span class="hljs-attr">applications</span>: positionId})
+        .then(<span class="hljs-function"><span class="hljs-params">applicants</span> =&gt;</span> {
+            res.send(applicants);
+        }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        res.status(<span class="hljs-number">500</span>).send({
+            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while retrieving applicants."</span>
         });
     });
 };</pre></div></div>
