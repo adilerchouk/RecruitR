@@ -9,7 +9,7 @@ const PositionSchema = mongoose.Schema({
     },
     skills: [String],
     description: String,
-    status: String
+    status: String,
 });
 
 // Export the Position model

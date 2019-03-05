@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>positionRoutes.js</title>
+  <title>recruiterController.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" media="all" href="../../docco.css" />
@@ -19,17 +19,17 @@
           <div id="jump_page">
             
               
-              <a class="source" href="../controllers/applicantController.html">
+              <a class="source" href="applicantController.html">
                 applicantController.js
               </a>
             
               
-              <a class="source" href="../controllers/positionController.html">
+              <a class="source" href="positionController.html">
                 positionController.js
               </a>
             
               
-              <a class="source" href="../controllers/recruiterController.html">
+              <a class="source" href="recruiterController.html">
                 recruiterController.js
               </a>
             
@@ -49,12 +49,12 @@
               </a>
             
               
-              <a class="source" href="applicantRoutes.html">
+              <a class="source" href="../routes/applicantRoutes.html">
                 applicantRoutes.js
               </a>
             
               
-              <a class="source" href="positionRoutes.html">
+              <a class="source" href="../routes/positionRoutes.html">
                 positionRoutes.js
               </a>
             
@@ -66,7 +66,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>positionRoutes.js</h1>
+                  <h1>recruiterController.js</h1>
               </div>
           </li>
         
@@ -81,8 +81,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">app</span>) =&gt;</span> {
-    <span class="hljs-keyword">const</span> positions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/positionController.js'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> Position = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/positionModel.js'</span>);
+<span class="hljs-keyword">const</span> Recruiter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/recruiterModel.js'</span>);</pre></div></div>
             
         </li>
         
@@ -93,11 +93,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Create a new Position</p>
+              <p>Match a recruiter with applicant</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.post(<span class="hljs-string">'/positions'</span>, positions.create);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>exports.matchRecruiterApplicant = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {</pre></div></div>
             
         </li>
         
@@ -108,11 +108,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Retrieve all Positions</p>
+              <p>Validate request</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions'</span>, positions.findAll);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!req.body) {
+        <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send({
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Body can not be empty."</span>
+        });
+    }</pre></div></div>
             
         </li>
         
@@ -123,11 +127,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Retrieve a single Position with match&gt;Id</p>
+              <p>Create a Position</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId'</span>, positions.findOne);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> match = <span class="hljs-keyword">new</span> Position({
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">skills</span>: req.body.skills,
+        <span class="hljs-attr">description</span>: req.body.description,
+        <span class="hljs-attr">status</span>: req.body.status,
+        <span class="hljs-attr">applicants</span>: req.body.applicants
+    });</pre></div></div>
             
         </li>
         
@@ -138,26 +148,18 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Update a Position with positionId</p>
+              <p>Save Position in the database</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.put(<span class="hljs-string">'/positions/:positionId'</span>, positions.update);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Delete a Position with positionId</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/positions/:positionId'</span>, positions.delete);
+            <div class="content"><div class='highlight'><pre>    match.save()
+        .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+            res.send(data);
+        }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        res.status(<span class="hljs-number">500</span>).send({
+            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while creating the match."</span>
+        });
+    });
 };</pre></div></div>
             
         </li>

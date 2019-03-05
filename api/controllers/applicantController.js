@@ -2,6 +2,7 @@ const Applicant = require('../models/applicantModel.js');
 
 // Create a new applicant
 exports.create = (req, res) => {
+
     // Validate request
     if (!req.body) {
         return res.status(400).send({
@@ -17,7 +18,7 @@ exports.create = (req, res) => {
         linkedIn: req.body.linkedIn,
         angelList: req.body.angelList,
         skills: req.body.skills,
-        applications: req.body.applications
+        positions: req.body.positions
     });
 
     // Save applicant in the database
@@ -119,11 +120,12 @@ exports.delete = (req, res) => {
     });
 };
 
+/*
 // Retrieve Applicants with positionId
-
 exports.findAllApplicantsByPositionId = (req, res) => {
-    var positionId = req.path.substring(11,35);
-    Applicant.find({applications: positionId})
+    var positionId = req.path.split("/")[2];
+    Applicant.find({positions: positionId})
+        .populate('positions')
         .then(applicants => {
             res.send(applicants);
         }).catch(err => {
@@ -132,3 +134,26 @@ exports.findAllApplicantsByPositionId = (req, res) => {
         });
     });
 };
+
+// Retrieve Applicant with applicantId who applied to Position with positionId
+exports.findOneApplicantByPositionId = (req, res) => {
+    Applicant.findById(req.params.applicantId)
+        .then(applicant => {
+            if (!applicant) {
+                return res.status(404).send({
+                    message: "Applicant not found with id " + req.params.applicantId
+                });
+            }
+            res.send(applicant);
+        }).catch(err => {
+        if (err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Applicant not found with id " + req.params.applicantId
+            });
+        }
+        return res.status(500).send({
+            message: "Error retrieving applicant with id " + req.params.applicantId
+        });
+    });
+};
+*/

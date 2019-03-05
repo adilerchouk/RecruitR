@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "node_modules/.bin/docco {app,test}/{**/*,*} -l classic"
+    "docs": "node_modules/.bin/docco {api,test}/{**/*,*} -l classic",
+    "start": "./node_modules/.bin/nodemon app.js"
   },
   "keywords": [
     "Express",
@@ -18,7 +19,9 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongoose": "^5.2.8"
+    "mongoose": "^5.4.17",
+    "nodemon": "^1.18.10",
+    "request": "^2.88.0"
   },
   "directories": {
     "doc": "docs"

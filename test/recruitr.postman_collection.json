@@ -6,136 +6,297 @@
 	},
 	"item": [
 		{
-			"name": "PositionPost",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"tags\": [\"Management\"],\n    \"name\": \"Big boss\",\n    \"description\": \"A boss position\",\n    \"status\": \"Available\"\n}"
-				},
-				"url": {
-					"raw": "localhost:3000/positions",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"positions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PositionsUpdate_OneField",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+			"name": "positionsEndpoints",
+			"item": [
+				{
+					"name": "positionPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"skills\": [\n            \"IT\",\n            \"Data\",\n            \"MongoDB\"\n        ],\n        \"name\": \"Data scientist\",\n        \"description\": \"A data scientist position\",\n        \"status\": \"Available\"\n    }"
+						},
+						"url": {
+							"raw": "localhost:3000/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions"
+							]
+						}
 					},
-					{
-						"key": "api_key",
-						"value": "1234",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"Lead Software Developer\"}"
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/positions/5c77b4b0b43a7d0c673e12a9",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"positions",
-						"5c77b4b0b43a7d0c673e12a9"
-					]
+				{
+					"name": "positionUpdate_OneField",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "api_key",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Lead Software Developer\"}"
+						},
+						"url": {
+							"raw": "localhost:3000/positions/5c77b4b0b43a7d0c673e12a9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions",
+								"5c77b4b0b43a7d0c673e12a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "positions/{positionId}_Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/positions/5c77cfbcc185e52a8ec198ed",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions",
+								"5c77cfbcc185e52a8ec198ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "positionsGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "positions/{positionId}_Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/positions/5c77b4b0b43a7d0c673e12a9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions",
+								"5c77b4b0b43a7d0c673e12a9"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "positions/{positionId}_Get",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"name": "applicantsEndpoints",
+			"item": [
+				{
+					"name": "applicantPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tomboe3@company.com\",\n    \"firstName\": \"Tom\",\n    \"lastName\": \"Boe\",\n    \"linkedIn\": \"https://linkedin.com/tomboe\",\n    \"angelList\": \"tomboe3\",\n    \"skills\": [\"IT\"],\n    \"applications\": [\"5c7abe5ac4f99125a5d223be\"]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applicants"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/positions/5c77cfbcc185e52a8ec198ed",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"positions",
-						"5c77cfbcc185e52a8ec198ed"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "positionsGet",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				{
+					"name": "applicants/{applicantId}_Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/applicants/5c7ab9fb0c37de253ff2f6b2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applicants",
+								"5c7ab9fb0c37de253ff2f6b2"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/positions",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"positions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "positions/{positionId}_Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				{
+					"name": "applicantsGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applicants"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/positions/5c77d8855b742b2b704e1cce",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"positions",
-						"5c77d8855b742b2b704e1cce"
-					]
+				{
+					"name": "applicants/{applicantId}_Del",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/applicants/5c7abad80c37de253ff2f6b6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applicants",
+								"5c7abad80c37de253ff2f6b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "applicants/{applicantId}_Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Johnny\",\n\t\"skills\": [\"IT\",\"Java\"]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/applicants/5c7abab80c37de253ff2f6b4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applicants",
+								"5c7abab80c37de253ff2f6b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "applicantsWithPositionIdGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/positions/5c7abe5ac4f99125a5d223be/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"positions",
+								"5c7abe5ac4f99125a5d223be",
+								"applicants"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

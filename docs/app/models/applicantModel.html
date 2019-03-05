@@ -58,11 +58,6 @@
                 positionRoutes.js
               </a>
             
-              
-              <a class="source" href="../routes/recruiterRoutes.html">
-                recruiterRoutes.js
-              </a>
-            
           </div>
         </li>
       </ul>
@@ -86,7 +81,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">var</span> Schema = mongoose.Schema;</pre></div></div>
             
         </li>
         
@@ -121,7 +117,7 @@
     <span class="hljs-attr">linkedIn</span>: <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">angelList</span>: <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">skills</span>: [<span class="hljs-built_in">String</span>],
-    <span class="hljs-attr">applications</span>: [<span class="hljs-built_in">String</span>]
+    <span class="hljs-attr">positions</span>: [{ <span class="hljs-attr">type</span>: Schema.Types.ObjectId, <span class="hljs-attr">ref</span>:<span class="hljs-string">'Position'</span>}]
 });</pre></div></div>
             
         </li>

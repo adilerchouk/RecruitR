@@ -183,19 +183,19 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Find a single position with a positionId</p>
+              <p>Find a single match with a positionId</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.findOne = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
     Applicant.findById(req.params.applicantId)
-        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!position) {
+        .then(<span class="hljs-function"><span class="hljs-params">match</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!match) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
                     <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
                 });
             }
-            res.send(position);
+            res.send(match);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
@@ -251,7 +251,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Find position and update it with the request body</p>
+              <p>Find match and update it with the request body</p>
 
             </div>
             

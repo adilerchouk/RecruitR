@@ -19,13 +19,23 @@
           <div id="jump_page">
             
               
-              <a class="source" href="applicantsController.html">
+              <a class="source" href="applicantController.html">
                 applicantController.js
               </a>
             
               
-              <a class="source" href="positionsController.html">
+              <a class="source" href="matchController.html">
+                matchController.js
+              </a>
+            
+              
+              <a class="source" href="positionController.html">
                 positionController.js
+              </a>
+            
+              
+              <a class="source" href="recruiterController.html">
+                recruiterController.js
               </a>
             
               
@@ -34,8 +44,18 @@
               </a>
             
               
+              <a class="source" href="../models/matchModel.html">
+                matchModel.js
+              </a>
+            
+              
               <a class="source" href="../models/positionModel.html">
                 positionModel.js
+              </a>
+            
+              
+              <a class="source" href="../models/recruiterModel.html">
+                recruiterModel.js
               </a>
             
               
@@ -44,8 +64,18 @@
               </a>
             
               
-              <a class="source" href="../routes/positionsRoutes.html">
+              <a class="source" href="../routes/matchRoutes.html">
+                matchRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../routes/positionRoutes.html">
                 positionRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../routes/recruiterRoutes.html">
+                recruiterRoutes.js
               </a>
             
           </div>
@@ -120,9 +150,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> match = <span class="hljs-keyword">new</span> Position({
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> position = <span class="hljs-keyword">new</span> Position({
         <span class="hljs-attr">name</span>: req.body.name,
-        <span class="hljs-attr">tags</span>: req.body.tags,
+        <span class="hljs-attr">skills</span>: req.body.skills,
         <span class="hljs-attr">description</span>: req.body.description,
         <span class="hljs-attr">status</span>: req.body.status
     });</pre></div></div>
@@ -140,12 +170,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    match.save()
+            <div class="content"><div class='highlight'><pre>    position.save()
         .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
             res.send(data);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while creating the match."</span>
+            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while creating the position."</span>
         });
     });
 };</pre></div></div>
@@ -183,19 +213,19 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Find a single match with a positionId</p>
+              <p>Find a single position with a positionId</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.findOne = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
     Position.findById(req.params.positionId)
-        .then(<span class="hljs-function"><span class="hljs-params">match</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!match) {
+        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!position) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
                     <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
                 });
             }
-            res.send(match);
+            res.send(position);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
@@ -203,7 +233,7 @@
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error retrieving match with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error retrieving position with id "</span> + req.params.positionId
         });
     });
 };</pre></div></div>
@@ -217,7 +247,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Update a match identified by the positionId in the request</p>
+              <p>Update a position identified by the positionId in the request</p>
 
             </div>
             
@@ -251,20 +281,20 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Find match and update it with the request body</p>
+              <p>Find position and update it with the request body</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    Position.findByIdAndUpdate(req.params.positionId,
         {<span class="hljs-attr">$set</span>: req.body}
         , {<span class="hljs-attr">new</span>: <span class="hljs-literal">true</span>})
-        .then(<span class="hljs-function"><span class="hljs-params">match</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!match) {
+        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!position) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
                     <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
                 });
             }
-            res.send(match);
+            res.send(position);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
             <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
@@ -272,7 +302,7 @@
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error updating match with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error updating position with id "</span> + req.params.positionId
         });
     });
 };</pre></div></div>
@@ -286,14 +316,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Delete a match with the specified positionId in the request</p>
+              <p>Delete a position with the specified positionId in the request</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>exports.delete = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
     Position.findByIdAndRemove(req.params.positionId)
-        .then(<span class="hljs-function"><span class="hljs-params">match</span> =&gt;</span> {
-            <span class="hljs-keyword">if</span> (!match) {
+        .then(<span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!position) {
                 <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
                     <span class="hljs-attr">message</span>: <span class="hljs-string">"Position not found with id "</span> + req.params.positionId
                 });
@@ -306,7 +336,7 @@
             });
         }
         <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: <span class="hljs-string">"Could not delete match with id "</span> + req.params.positionId
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Could not delete position with id "</span> + req.params.positionId
         });
     });
 };</pre></div></div>

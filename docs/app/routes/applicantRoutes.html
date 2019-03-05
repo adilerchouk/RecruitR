@@ -58,11 +58,6 @@
                 positionRoutes.js
               </a>
             
-              
-              <a class="source" href="recruiterRoutes.html">
-                recruiterRoutes.js
-              </a>
-            
           </div>
         </li>
       </ul>
@@ -177,7 +172,23 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId/applicants'</span>,applicants.findAllApplicantsByPositionId)
+            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId/applicants'</span>,applicants.findAllApplicantsByPositionId);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Retrieve Applicant with applicantId who applied to Position with positionId</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/positions/:positionId/applicants/:applicantId'</span>,applicants.findOneApplicantByPositionId);
+
 };</pre></div></div>
             
         </li>

@@ -58,11 +58,6 @@
                 positionRoutes.js
               </a>
             
-              
-              <a class="source" href="../routes/recruiterRoutes.html">
-                recruiterRoutes.js
-              </a>
-            
           </div>
         </li>
       </ul>
@@ -142,7 +137,7 @@
         <span class="hljs-attr">linkedIn</span>: req.body.linkedIn,
         <span class="hljs-attr">angelList</span>: req.body.angelList,
         <span class="hljs-attr">skills</span>: req.body.skills,
-        <span class="hljs-attr">applications</span>: req.body.applications
+        <span class="hljs-attr">positions</span>: req.body.positions
     });</pre></div></div>
             
         </li>
@@ -158,7 +153,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    applicant.save()
+            <div class="content"><div class='highlight'><pre>        applicant.save()
         .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
             res.send(data);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
@@ -269,7 +264,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Find position and update it with the request body</p>
+              <p>Find match and update it with the request body</p>
 
             </div>
             
@@ -342,16 +337,49 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-exports.findAllApplicantsByPositionId = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-    <span class="hljs-keyword">var</span> positionId = req.path.substring(<span class="hljs-number">11</span>,<span class="hljs-number">35</span>);
-    <span class="hljs-built_in">console</span>.log(positionId);
-    Applicant.find({<span class="hljs-attr">applications</span>: positionId})
+            <div class="content"><div class='highlight'><pre>exports.findAllApplicantsByPositionId = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    <span class="hljs-keyword">var</span> positionId = req.path.split(<span class="hljs-string">"/"</span>)[<span class="hljs-number">2</span>];
+    Applicant.find({<span class="hljs-attr">positions</span>: positionId})
+        .populate(<span class="hljs-string">'positions'</span>)
         .then(<span class="hljs-function"><span class="hljs-params">applicants</span> =&gt;</span> {
             res.send(applicants);
         }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
         res.status(<span class="hljs-number">500</span>).send({
             <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while retrieving applicants."</span>
+        });
+    });
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Retrieve Applicant with applicantId who applied to Position with positionId</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>exports.findOneApplicantByPositionId = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    Applicant.findById(req.params.applicantId)
+        .then(<span class="hljs-function"><span class="hljs-params">applicant</span> =&gt;</span> {
+            <span class="hljs-keyword">if</span> (!applicant) {
+                <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
+                    <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
+                });
+            }
+            res.send(applicant);
+        }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err.kind === <span class="hljs-string">'ObjectId'</span>) {
+            <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">404</span>).send({
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"Applicant not found with id "</span> + req.params.applicantId
+            });
+        }
+        <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).send({
+            <span class="hljs-attr">message</span>: <span class="hljs-string">"Error retrieving applicant with id "</span> + req.params.applicantId
         });
     });
 };</pre></div></div>

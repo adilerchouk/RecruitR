@@ -14,7 +14,9 @@ app.use(bodyParser.json());
 // Configuring the database
 const dbConfig = require('./config/config.js');
 const mongoose = require('mongoose');
+// Settings to avoid depreciation warnings
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
@@ -33,8 +35,10 @@ app.get('/', (req, res) => {
 });
 
 // Define routes
-require('./app/routes/positionRoutes.js')(app);
-require('./app/routes/applicantRoutes.js')(app);
+require('./api/routes/positionRoutes.js')(app);
+require('./api/routes/applicantRoutes.js')(app);
+require('./api/routes/recruiterRoutes.js')(app);
+require('./api/routes/matchRoutes.js')(app);
 
 // Listen for requests
 app.listen(3000, () => {
