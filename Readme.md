@@ -43,11 +43,12 @@ The quick documentation of the source code is available in the docs/ folder (Doc
 
 This project uses data about job positions, users (candidates, HR and recruiter) and it assumes that it's stored in a MongoDB database. Since I can't include a link to my dev database, I've pasted the same data here so you can toss it into your own (I called mine "recruitR_DB"), create your collections, and add the data.
 
-Basically, you'll need three collections:
+Basically, you'll need four collections:
 
 - positions
 - applicants
 - recruiters
+- matches
 
 Add the data below to each of those:
 
@@ -100,19 +101,53 @@ applicants:
         "lastName": "DOE",
         "linkedIn": "https://linkedin.com/johndoe",
         "angelList": "johndoe12"
-        "applications": ["",""]
     },
     {
         "skills": [
             "IT",
             "Java"
         ],
-        "email": "tomboe@company.com",
+        "email": "johnnyboe@company.com",
         "firstName": "Johnny",
         "lastName": "BOE",
-        "linkedIn": "https://linkedin.com/tomboe",
+        "linkedIn": "https://linkedin.com/johnnyboe",
         "angelList": "tomboe3"
-        "applications": ["",""]
+    }
+]
+```
+
+```
+recruiters:
+
+[
+    {
+        "skills": [
+            "Data",
+            "IT",
+            "MongoDB"
+        ],
+        "email": "patricktimsit@company.com",
+        "firstName": "Patrick",
+        "lastName": "TIMSIT"
+    },
+    {
+        "skills": [
+            "IT",
+            "MongoDB",
+             Programming"
+        ],
+        "firstName": "Johnny",
+        "lastName": "DEPP",
+        "email": "johnnydepp@company.com"
+        }
+]
+```
+
+```
+matches:
+
+[
+    {
     }
 ]
 ```
