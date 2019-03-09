@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>recruiterRoutes.js</title>
+  <title>matching.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" media="all" href="../../docco.css" />
@@ -59,27 +59,27 @@
               </a>
             
               
-              <a class="source" href="applicantRoutes.html">
+              <a class="source" href="../routes/applicantRoutes.html">
                 applicantRoutes.js
               </a>
             
               
-              <a class="source" href="matchRoutes.html">
+              <a class="source" href="../routes/matchRoutes.html">
                 matchRoutes.js
               </a>
             
               
-              <a class="source" href="positionRoutes.html">
+              <a class="source" href="../routes/positionRoutes.html">
                 positionRoutes.js
               </a>
             
               
-              <a class="source" href="recruiterRoutes.html">
+              <a class="source" href="../routes/recruiterRoutes.html">
                 recruiterRoutes.js
               </a>
             
               
-              <a class="source" href="../utils/matching.html">
+              <a class="source" href="matching.html">
                 matching.js
               </a>
             
@@ -96,7 +96,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>recruiterRoutes.js</h1>
+                  <h1>matching.js</h1>
               </div>
           </li>
         
@@ -111,8 +111,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">app</span>) =&gt;</span> {
-    <span class="hljs-keyword">const</span> recruiters = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/recruiterController.js'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> matchingConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../config/config.js'</span>);</pre></div></div>
             
         </li>
         
@@ -123,11 +122,21 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Create a new Recruiter</p>
+              <p>Function to get the number of matching occurrences of strings in two arrays.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.post(<span class="hljs-string">'/recruiters'</span>, recruiters.create);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> matchingString = exports.matchingStrings = <span class="hljs-function">(<span class="hljs-params">stringArray1,stringArray2</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> matchingStrings = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> stringArray1){
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j <span class="hljs-keyword">in</span> stringArray2){
+           <span class="hljs-keyword">if</span>(stringArray1[i].toLowerCase().trim()===stringArray2[j].toLowerCase().trim()){
+               matchingStrings+=<span class="hljs-number">1</span>;
+           }
+       }
+    }
+    <span class="hljs-keyword">return</span> matchingStrings;
+};</pre></div></div>
             
         </li>
         
@@ -138,56 +147,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Retrieve all Recruiters</p>
+              <p>Function to get the score of matching skills.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/recruiters'</span>, recruiters.findAll);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Retrieve a single Recruiter with recruiterId</p>
+            <div class="content"><div class='highlight'><pre>exports.matchingSkills = <span class="hljs-function">(<span class="hljs-params">recruiterSkills,positionsSkills</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> (matchingString(recruiterSkills,positionsSkills)/positionsSkills.length)*matchingConfig.skills;
+};
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    app.get(<span class="hljs-string">'/recruiters/:recruiterId'</span>, recruiters.findOne);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>Update a Recruiter with recruiterId</p>
+exports.matchingScore = <span class="hljs-function">(<span class="hljs-params">random,match,seniority</span>) =&gt;</span> {
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    app.put(<span class="hljs-string">'/recruiters/:recruiterId'</span>, recruiters.update);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Delete a Recruiter with recruiterId</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    app.delete(<span class="hljs-string">'/recruiters/:recruiterId'</span>, recruiters.delete);
 };</pre></div></div>
             
         </li>

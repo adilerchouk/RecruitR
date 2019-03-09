@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\n        \"skills\": [\n            \"IT\",\n            \"Data\",\n            \"MongoDB\"\n        ],\n        \"name\": \"Data scientist\",\n        \"description\": \"A data scientist position\",\n        \"status\": \"Available\"\n    }"
+							"raw": "\t{\n        \"skills\": [\n            \"IT\",\n            \"Data\",\n            \"MongoDB\"\n        ],\n        \"name\": \"Data scientist\",\n        \"description\": \"A data scientist match\",\n        \"status\": \"Available\"\n    }"
 						},
 						"url": {
 							"raw": "localhost:3000/positions",
@@ -56,17 +56,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"Lead Software Developer\"}"
+							"raw": "{\n\t\"description\":\"A data scientist position\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/positions/5c77b4b0b43a7d0c673e12a9",
+							"raw": "localhost:3000/positions/5c7ee30f53a0c7268062a681",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"positions",
-								"5c77b4b0b43a7d0c673e12a9"
+								"5c7ee30f53a0c7268062a681"
 							]
 						}
 					},
@@ -82,14 +82,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/positions/5c77cfbcc185e52a8ec198ed",
+							"raw": "localhost:3000/positions/5c7ee40753a0c7268062a682",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"positions",
-								"5c77cfbcc185e52a8ec198ed"
+								"5c7ee40753a0c7268062a682"
 							]
 						}
 					},
@@ -127,14 +127,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/positions/5c77b4b0b43a7d0c673e12a9",
+							"raw": "localhost:3000/positions/5c7ee40753a0c7268062a682",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"positions",
-								"5c77b4b0b43a7d0c673e12a9"
+								"5c7ee40753a0c7268062a682"
 							]
 						}
 					},
@@ -159,7 +159,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"tomboe3@company.com\",\n    \"firstName\": \"Tom\",\n    \"lastName\": \"Boe\",\n    \"linkedIn\": \"https://linkedin.com/tomboe\",\n    \"angelList\": \"tomboe3\",\n    \"skills\": [\"IT\"],\n    \"applications\": [\"5c7abe5ac4f99125a5d223be\"]\n}"
+							"raw": "{\n        \"skills\": [\n            \"Management\",\n            \"HR\"\n        ],\n        \"email\": \"email@company.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"DOE\",\n        \"linkedIn\": \"https://linkedin.com/johndoe\",\n        \"angelList\": \"johndoe12\"\n    }"
 						},
 						"url": {
 							"raw": "localhost:3000/applicants",
@@ -184,14 +184,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/applicants/5c7ab9fb0c37de253ff2f6b2",
+							"raw": "localhost:3000/applicants/5c7eeafd5555022718b84b00",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"applicants",
-								"5c7ab9fb0c37de253ff2f6b2"
+								"5c7eeafd5555022718b84b00"
 							]
 						}
 					},
@@ -229,14 +229,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/applicants/5c7abad80c37de253ff2f6b6",
+							"raw": "localhost:3000/applicants/5c7eeafd5555022718b84b00",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"applicants",
-								"5c7abad80c37de253ff2f6b6"
+								"5c7eeafd5555022718b84b00"
 							]
 						}
 					},
@@ -256,24 +256,58 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstName\": \"Johnny\",\n\t\"skills\": [\"IT\",\"Java\"]\n}"
+							"raw": "{\n\t\"firstName\": \"Arthur\",\n\t\"skills\": [\"IT\",\"Java\"]\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/applicants/5c7abab80c37de253ff2f6b4",
+							"raw": "localhost:3000/applicants/5c7eeb045555022718b84b01",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"applicants",
-								"5c7abab80c37de253ff2f6b4"
+								"5c7eeb045555022718b84b01"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recruitersEndpoints",
+			"item": [
+				{
+					"name": "recruiterPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skills\": [\n        \"IT\",\n        \"MongoDB\",\n        \"Programming\"\n    ],\n    \"email\": \"johnnydepp@company.com\",\n    \"firstName\": \"Johnny\",\n    \"lastName\": \"DEPP\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/recruiters",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recruiters"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "applicantsWithPositionIdGet",
+					"name": "recruitersGet",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -282,15 +316,238 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/positions/5c7abe5ac4f99125a5d223be/applicants",
+							"raw": "localhost:3000/recruiters",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"positions",
-								"5c7abe5ac4f99125a5d223be",
-								"applicants"
+								"recruiters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recruiter/{recruiterId}_Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/recruiters/5c7ee7c85555022718b84afe",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recruiters",
+								"5c7ee7c85555022718b84afe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recruiters/{recruiterId}_Del",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/recruiters/5c7ee7c85555022718b84afe",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recruiters",
+								"5c7ee7c85555022718b84afe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recuiters/{recruiterId}_Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Arthur\",\n\t\"skills\": [\"IT\",\"Java\"]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/recruiters/5c7ee7c85555022718b84afe",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recruiters",
+								"5c7ee7c85555022718b84afe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "matchesEndpoints",
+			"item": [
+				{
+					"name": "matchesGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/matches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matchPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"positionId\": \"5c7ee40753a0c7268062a682\",\n    \"applicantId\": \"5c7eeb045555022718b84b01\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/matches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matches/{matcheId}_Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches",
+								"5c7efaa8b7506f29fc2ce773"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matches/{matchesId}_Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches",
+								"5c7efaa8b7506f29fc2ce773"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matches/{matchId}_Del",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches",
+								"5c7efaa8b7506f29fc2ce773"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matches/{matchId}/relevantRecruiters_Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773/relevantRecruiters",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"matches",
+								"5c7efaa8b7506f29fc2ce773",
+								"relevantRecruiters"
 							]
 						}
 					},

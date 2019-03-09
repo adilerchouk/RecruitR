@@ -1,4 +1,6 @@
 const Match = require('../models/matchModel.js');
+const Position = require('../models/positionModel.js');
+const Recruiter = require('../models/recruiterModel.js');
 
 // Create a new Match
 exports.create = (req, res) => {
@@ -61,18 +63,18 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Match identified by the matchId in the request
+// Update a Match identified by the matchId in the request with the recruiterId
 exports.update = (req, res) => {
     // Validate Request
-    if (!req.body) {
+    if (!req.body.recruiterId) {
         return res.status(400).send({
-            message: "Match content can not be empty"
+            message: "Match recruiterId can not be empty"
         });
     }
 
     // Find Match and update it with the request body
     Match.findByIdAndUpdate(req.params.matchId,
-        {$set: req.body}
+        {$set: req.body.recruiterId}
         , {new: true})
         .then(match => {
             if (!match) {
@@ -111,6 +113,18 @@ exports.delete = (req, res) => {
         }
         return res.status(500).send({
             message: "Could not delete Match with id " + req.params.matchId
+        });
+    });
+};
+
+// Retrieve matching recruiters regarding the skills
+exports.findMatchingRecruiters= (req, res) => {
+        Position.find()
+        .then(matches => {
+            res.send(matches);
+        }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving positions."
         });
     });
 };

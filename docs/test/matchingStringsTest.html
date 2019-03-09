@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>matchingStringsTest.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="../docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="../api/controllers/applicantController.html">
+                applicantController.js
+              </a>
+            
+              
+              <a class="source" href="../api/controllers/matchController.html">
+                matchController.js
+              </a>
+            
+              
+              <a class="source" href="../api/controllers/positionController.html">
+                positionController.js
+              </a>
+            
+              
+              <a class="source" href="../api/controllers/recruiterController.html">
+                recruiterController.js
+              </a>
+            
+              
+              <a class="source" href="../api/models/applicantModel.html">
+                applicantModel.js
+              </a>
+            
+              
+              <a class="source" href="../api/models/matchModel.html">
+                matchModel.js
+              </a>
+            
+              
+              <a class="source" href="../api/models/positionModel.html">
+                positionModel.js
+              </a>
+            
+              
+              <a class="source" href="../api/models/recruiterModel.html">
+                recruiterModel.js
+              </a>
+            
+              
+              <a class="source" href="../api/routes/applicantRoutes.html">
+                applicantRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../api/routes/matchRoutes.html">
+                matchRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../api/routes/positionRoutes.html">
+                positionRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../api/routes/recruiterRoutes.html">
+                recruiterRoutes.js
+              </a>
+            
+              
+              <a class="source" href="../api/utils/matching.html">
+                matching.js
+              </a>
+            
+              
+              <a class="source" href="matchingStringsTest.html">
+                matchingStringsTest.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>matchingStringsTest.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).assert;
+<span class="hljs-keyword">const</span> matching = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../api/utils/matching.js'</span>);
+<span class="hljs-keyword">const</span> matchingConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../config/config.js'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Test of matchingStrings</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 2'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">2</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Test of matchingStrings with not all strings matching</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 1'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Troisième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">1</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Test of matching strings case sensitive</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings case sensitive'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 1'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"premier"</span>,<span class="hljs-string">"Troisième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">1</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Test of matching strings trimmed (space before or after one String)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings trimmed'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 1'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"  Premier"</span>,<span class="hljs-string">"Troisième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">1</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Test of the score between 0 and 1 for matching Skills with weight defined in config.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingSkills'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 0.5*matchingConfig.skills'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Troisième"</span>];
+        <span class="hljs-keyword">const</span> result = <span class="hljs-number">0.5</span>*matchingConfig.skills;
+        assert.equal(matching.matchingSkills(stringArray1,stringArray2),result)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

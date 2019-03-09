@@ -7,12 +7,15 @@ module.exports = (app) => {
     // Retrieve all Matches
     app.get('/matches', matches.findAll);
 
-    // Retrieve a single Match with matchId
+    // Retrieve a single Match identified by matchId
     app.get('/matches/:matchId', matches.findOne);
 
-    // Update a Match with matchId
+    // Update a Match identified by matchId with a recruiter
     app.put('/matches/:matchId', matches.update);
 
     // Delete a Match with matchId
     app.delete('/matches/:matchId', matches.delete);
+
+    // Retrieve matching recruiters regarding the skills
+    app.get('/matches/:matchId/relevantRecruiters', matches.findMatchingRecruiters);
 };

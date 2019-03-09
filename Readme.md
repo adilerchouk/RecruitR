@@ -41,7 +41,7 @@ The quick documentation of the source code is available in the docs/ folder (Doc
 
 ### The data
 
-This project uses data about job positions, users (candidates, HR and recruiter) and it assumes that it's stored in a MongoDB database. Since I can't include a link to my dev database, I've pasted the same data here so you can toss it into your own (I called mine "recruitR_DB"), create your collections, and add the data.
+This project uses data about job positions, candidates, recruiters and it assumes that it's stored in a MongoDB database. Since I can't include a link to my dev database, I've pasted the same data here so you can toss it into your own (I called mine "recruitR_DB"), create your collections, and add the data.
 
 Basically, you'll need four collections:
 
