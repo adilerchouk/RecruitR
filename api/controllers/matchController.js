@@ -64,35 +64,52 @@ exports.findOne = (req, res) => {
 };
 
 // Update a Match identified by the matchId in the request with the recruiterId
-exports.update = (req, res) => {
+exports.update = async (req, res, next) => {
     // Validate Request
     if (!req.body.recruiterId) {
         return res.status(400).send({
             message: "Match recruiterId can not be empty"
         });
     }
+    try {
+        // Declare promise
+        var myPromise = () => {
+            return new Promise((resolve, reject) => {
+                // Retrieve
+                Match.findByIdAndUpdate(req.params.matchId,
+                    {
+                        $set:
+                            {
+                                recruiterId:
+                                req.body.recruiterId
+                            }
+                    }, {new: true})
+                // Increase the seniority of the recruiter after matching the recruiter.
+                    .then(function (match) {
+                        Recruiter.findByIdAndUpdate(match.recruiterId,
+                            {
+                                $inc:
+                                    {
+                                        seniority:
+                                        +1
+                                    }
+                            })
+                            .then(function (result) {
+                                resolve(result);
+                            });
+                    });
+            })
+        };
 
-    // Find Match and update it with the request body
-    Match.findByIdAndUpdate(req.params.matchId,
-        {$set: req.body.recruiterId}
-        , {new: true})
-        .then(match => {
-            if (!match) {
-                return res.status(404).send({
-                    message: "Match not found with id " + req.params.matchId
-                });
-            }
-            res.send(match);
-        }).catch(err => {
-        if (err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Match not found with id " + req.params.matchId
-            });
-        }
-        return res.status(500).send({
-            message: "Error updating position with id " + req.params.matchId
-        });
-    });
+        //await myPromise
+        var result = await myPromise();
+        //continue execution
+        res.send(result);
+
+
+    } catch (e) {
+        next(e)
+    }
 };
 
 // Delete a Match with the specified matchId in the request
