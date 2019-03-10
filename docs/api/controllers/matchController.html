@@ -79,8 +79,8 @@
               </a>
             
               
-              <a class="source" href="../utils/matching.html">
-                matching.js
+              <a class="source" href="../utils/matchingUtils.html">
+                matchingUtils.js
               </a>
             
               
@@ -113,7 +113,8 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> Match = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/matchModel.js'</span>);
 <span class="hljs-keyword">const</span> Position = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/positionModel.js'</span>);
-<span class="hljs-keyword">const</span> Recruiter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/recruiterModel.js'</span>);</pre></div></div>
+<span class="hljs-keyword">const</span> Recruiter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/recruiterModel.js'</span>);
+<span class="hljs-keyword">const</span> matching = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../utils/matchingUtils.js'</span>);</pre></div></div>
             
         </li>
         
@@ -361,19 +362,92 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Retrieve matching recruiters regarding the skills</p>
+              <p>Retrieve matching recruiters regarding the skills.
+The added value “score” in their documents allow for sorting by element on Front-End.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.findMatchingRecruiters= <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-        Position.find()
-        .then(<span class="hljs-function"><span class="hljs-params">matches</span> =&gt;</span> {
-            res.send(matches);
-        }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
-        res.status(<span class="hljs-number">500</span>).send({
-            <span class="hljs-attr">message</span>: err.message || <span class="hljs-string">"Some error occurred while retrieving positions."</span>
-        });
-    });
+            <div class="content"><div class='highlight'><pre>exports.findMatchingRecruiters = <span class="hljs-keyword">async</span> (req, res, next) =&gt; {
+    <span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Declare promise</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> myPromise = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Retrieve recruiters data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                Recruiter.find()
+                    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">recruitersTable</span>) </span>{
+                        Match.findById(req.params.matchId)
+                            .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">matchTable</span>) </span>{
+                                Position.findById(matchTable.positionId)
+                                    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">positionTable</span>) </span>{
+                                        result = matching.matchingScoreRecruitersTable(recruitersTable, positionTable);
+                                        <span class="hljs-built_in">console</span>.log(result);
+                                        resolve(result);
+                                    });
+                            });
+                    });
+            });
+        };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>await myPromise</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> myPromise();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>continue execution</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        res.json(result);
+
+
+    } <span class="hljs-keyword">catch</span> (e) {
+        next(e)
+    }
 };</pre></div></div>
             
         </li>

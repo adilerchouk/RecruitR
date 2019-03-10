@@ -79,7 +79,7 @@
               </a>
             
               
-              <a class="source" href="matching.html">
+              <a class="source" href="matchingUtils.html">
                 matchingUtils.js
               </a>
             
@@ -127,13 +127,13 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> matchingString = exports.matchingStrings = <span class="hljs-function">(<span class="hljs-params">stringArray1,stringArray2</span>) =&gt;</span> {
-    <span class="hljs-keyword">let</span> matchingStrings = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> stringArray1){
-       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j <span class="hljs-keyword">in</span> stringArray2){
-           <span class="hljs-keyword">if</span>(stringArray1[i].toLowerCase().trim()===stringArray2[j].toLowerCase().trim()){
-               matchingStrings+=<span class="hljs-number">1</span>;
-           }
-       }
+    <span class="hljs-keyword">var</span> matchingStrings = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; stringArray1.length; i++){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; stringArray2.length; j++){
+            <span class="hljs-keyword">if</span>(stringArray1[i].trim().toLowerCase()===stringArray2[j].trim().toLowerCase()) {
+                matchingStrings += <span class="hljs-number">1</span>;
+            }
+        }
     }
     <span class="hljs-keyword">return</span> matchingStrings;
 };</pre></div></div>
@@ -147,7 +147,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Function to get the score of matching skills.</p>
+              <p>Function to get the score of matching skills. @todo</p>
 
             </div>
             
@@ -168,8 +168,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> seniorityScore = exports.seniorityScore = <span class="hljs-function">(<span class="hljs-params">seniority</span>) =&gt;</span> {
-    <span class="hljs-keyword">return</span> seniority*matchingConfig.seniority;
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> seniorityScore = exports.seniorityScore = <span class="hljs-function">(<span class="hljs-params">seniority,maxSeniority</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> seniority*matchingConfig.seniority/maxSeniority;
 };</pre></div></div>
             
         </li>
@@ -198,12 +198,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Function to get the matching score</p>
+              <p>Function to get the matching score.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.matchingScore = <span class="hljs-function">(<span class="hljs-params">recruiterSkills,positionSkills,seniority</span>) =&gt;</span> {
-    <span class="hljs-keyword">return</span> matchingSkillsScore(recruiterSkills,positionSkills)+seniorityScore(seniority)+randomScore()
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> matchingScore = exports.matchingScore = <span class="hljs-function">(<span class="hljs-params">recruiterSkills,positionSkills,seniority,maxSeniority</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> matchingSkillsScore(recruiterSkills,positionSkills)+seniorityScore(seniority,maxSeniority)+randomScore()
 };</pre></div></div>
             
         </li>
@@ -215,20 +215,81 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Function to get info from relevant JSON tables and get the score</p>
+              <p>Function to get recruiters with their matching scores from relevant JSON tables and get the score.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.matchingScoreTable = <span class="hljs-function">(<span class="hljs-params">recruitersTable, positionTable</span>) =&gt;</span> {
-    <span class="hljs-keyword">var</span> positionSkills = positionTable.skills;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> recruitersTable){
+            <div class="content"><div class='highlight'><pre>exports.matchingScoreRecruitersTable = <span class="hljs-function">(<span class="hljs-params">recruitersTable, positionTable</span>) =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Define the array of skills for the position</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> positionSkills = positionTable.skills;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Define maxSeniority to weight the seniority score.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> maxSeniority = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> recruitersTable){
+        <span class="hljs-keyword">if</span>(recruitersTable[i].seniority&gt;maxSeniority){
+            maxSeniority=recruitersTable[i].seniority
+        }
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Retrieve the score of each recruiter.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> recruitersTable){
         <span class="hljs-keyword">var</span> seniority = recruitersTable[i].seniority;
         <span class="hljs-keyword">var</span> recruiterSkills = recruitersTable[i].skills;
-        <span class="hljs-keyword">var</span> recruiterScore = matchingScore(recruiterSkills,positionSkills,seniority);
-        recruitersTable[<span class="hljs-string">"score"</span>]=recruiterScore;
-        <span class="hljs-built_in">console</span>.log(recruitersTable);
-    }
+        <span class="hljs-keyword">var</span> recruiterScore = matchingScore(recruiterSkills,positionSkills,seniority,maxSeniority);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Adding the score to the recruitersTable.</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        recruitersTable[i].matchingScore=recruiterScore;
+    }
+    <span class="hljs-keyword">return</span> recruitersTable;
 };</pre></div></div>
             
         </li>

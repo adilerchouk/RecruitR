@@ -14,7 +14,8 @@ exports.create = (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         skills: req.body.skills,
-        email: req.body.email
+        email: req.body.email,
+        seniority: req.body.seniority
     });
 
     // Save Recruiter in the database

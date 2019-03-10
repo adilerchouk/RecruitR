@@ -79,8 +79,8 @@
               </a>
             
               
-              <a class="source" href="../utils/matching.html">
-                matching.js
+              <a class="source" href="../utils/matchingUtils.html">
+                matchingUtils.js
               </a>
             
               
@@ -145,7 +145,12 @@
         <span class="hljs-attr">trim</span>: <span class="hljs-literal">true</span>
     },
     <span class="hljs-attr">skills</span>: [<span class="hljs-built_in">String</span>],
-    <span class="hljs-attr">seniority</span>: <span class="hljs-built_in">Number</span>
+    <span class="hljs-attr">seniority</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-built_in">Number</span>,
+        <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">default</span>: <span class="hljs-number">0</span>
+    },
+    <span class="hljs-attr">matchingScore</span>: <span class="hljs-built_in">Number</span>
 });</pre></div></div>
             
         </li>

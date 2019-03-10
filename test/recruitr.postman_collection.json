@@ -291,7 +291,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"skills\": [\n        \"IT\",\n        \"MongoDB\",\n        \"Programming\"\n    ],\n    \"email\": \"johnnydepp@company.com\",\n    \"firstName\": \"Johnny\",\n    \"lastName\": \"DEPP\"\n}"
+							"raw": "{\n        \"skills\": [\n            \"Data\",\n            \"IT\",\n            \"MongoDB\"\n        ],\n        \"firstName\": \"Patrick\",\n        \"lastName\": \"TIMSIT\",\n        \"email\": \"patricktimsit2@company.com\"\n    }"
 						},
 						"url": {
 							"raw": "localhost:3000/recruiters",
@@ -539,7 +539,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773/relevantRecruiters",
+							"raw": "localhost:3000/matches/5c7efaa8b7506f29fc2ce773/matchingRecruiters",
 							"host": [
 								"localhost"
 							],
@@ -547,7 +547,7 @@
 							"path": [
 								"matches",
 								"5c7efaa8b7506f29fc2ce773",
-								"relevantRecruiters"
+								"matchingRecruiters"
 							]
 						}
 					},

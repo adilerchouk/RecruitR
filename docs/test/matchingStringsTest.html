@@ -79,8 +79,8 @@
               </a>
             
               
-              <a class="source" href="../api/utils/matching.html">
-                matching.js
+              <a class="source" href="../api/utils/matchingUtils.html">
+                matchingUtils.js
               </a>
             
               
@@ -112,7 +112,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).assert;
-<span class="hljs-keyword">const</span> matching = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../api/utils/matching.js'</span>);
+<span class="hljs-keyword">const</span> matching = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../api/utils/matchingUtils.js'</span>);
 <span class="hljs-keyword">const</span> matchingConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../config/config.js'</span>);</pre></div></div>
             
         </li>
@@ -145,6 +145,48 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
+              <p>Test of matchingStrings with two different length Strings</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings != length'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 2'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Troisième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>,<span class="hljs-string">"Troisième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">2</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Test of matchingStrings with two different length Strings</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingStrings != length'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">'Function should return 2'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>,<span class="hljs-string">"Troisième"</span>];
+        <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
+        assert.equal(matching.matchingStrings(stringArray1,stringArray2),<span class="hljs-number">2</span>)
+    });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
               <p>Test of matchingStrings with not all strings matching</p>
 
             </div>
@@ -160,11 +202,11 @@
         </li>
         
         
-        <li id="section-4">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Test of matching strings case sensitive</p>
 
@@ -181,11 +223,11 @@
         </li>
         
         
-        <li id="section-5">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Test of matching strings trimmed (space before or after one String)</p>
 
@@ -202,22 +244,22 @@
         </li>
         
         
-        <li id="section-6">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Test of the score between 0 and 1 for matching Skills with weight defined in config.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingSkills'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'matchingSkillsScore'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     it(<span class="hljs-string">'Function should return 0.5*matchingConfig.skills'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
         <span class="hljs-keyword">let</span> stringArray1 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Deuxième"</span>];
         <span class="hljs-keyword">let</span> stringArray2 = [<span class="hljs-string">"Premier"</span>,<span class="hljs-string">"Troisième"</span>];
         <span class="hljs-keyword">const</span> result = <span class="hljs-number">0.5</span>*matchingConfig.skills;
-        assert.equal(matching.matchingSkills(stringArray1,stringArray2),result)
+        assert.equal(matching.matchingSkillsScore(stringArray1,stringArray2),result)
     });
 });</pre></div></div>
             

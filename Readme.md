@@ -3,7 +3,9 @@
 ### What is this ?
 
 This is a rather simple pet Project for a HR application that can do CRUD operations on documents stored in a MongoDB database.
-The goal is to help recruitment process and manage candidates
+The goal is to help recruitment process and manage candidates.
+
+It has a matching function taking into account several parameters like skills, seniority and random which weights can be configured.
 
 ### What's needed
 
@@ -13,20 +15,38 @@ This API runs on node.js, and makes use of the following:
 - [MongoDB](http://mongodb.com) - NoSQL database that holds our data
 - [Mongoose](http://mongoosejs.com/) - ODM (object data mapping) layer, translates your data into JavaScript objects so you can work with them easier.
 - [Docco](http://ashkenas.com/docco/) - Quick-and-dirty documentation generator using comments.
+- [Mocha](https://mochajs.org/) - Framework for asynchronous testing.
+- [Chai](https://www.chaijs.com/) - Assertion library for node.
+
 ### Get started
 
 Clone this project (or download the zip file), then run ```npm install``` to install the dependencies.
 
-Next you'll want to create your own "config.js" file. There's a file in the project called "config-template.js" that you can copy to "config-template.js", and modify it to include the connection string to your database.
+Next you'll want to create your own "config.js" file. There's a file in the project called "config-template.js" that you can copy to "config.js", and modify it to include the connection string to your database.
+
+You can also modify the matching function configuration, the three variable are the weight of skills,  randomization and seniority.
 
 The file will look like the one below. Just replace the dummy connection string with the real one you'll be using.
 
 
 ```
 /**
-* Config file for the API
-*/
-exports.db_url = 'mongodb://username:password@your-mongo-host.com/database-name';
+ * Config file
+ */
+
+// Matching function config
+    // "random" is to randomize the match, "skills" is to weight skill match, "seniority" is to weight number of previously matched applicants.
+const random = 0.20;
+const skills = 0.70;
+const seniority = 0.10;
+
+// Database config
+module.exports = {
+    url: 'mongodb://localhost:27017/recruitR_DB',
+    random,
+    skills,
+    seniority
+};
 
 ```
 
@@ -36,6 +56,8 @@ Now, startup up server with the command `node app.js`, and you should see the me
     Successfully connected to the database
 
 If you don't see those messages, double check the connection string to your database in your config file, and make sure the file is called "config.js" and not "config-template.js".
+
+Also make sure you have started your mongo database with `mongod` in the terminal.
 
 The quick documentation of the source code is available in the docs/ folder (Docco produces HTML files).
 
@@ -50,7 +72,7 @@ Basically, you'll need four collections:
 - recruiters
 - matches
 
-Add the data below to each of those:
+Add the data below to each of those (all object have an "_id" property generated during POST):
 
 ```
 positions:
@@ -79,7 +101,8 @@ positions:
         "skills": [
             "IT",
             "Data",
-            "MongoDB"
+            "MongoDB",
+            "NLP
         ],
         "name": "Data scientist",
         "description": "A data scientist position",
@@ -133,8 +156,8 @@ recruiters:
     {
         "skills": [
             "IT",
-            "MongoDB",
-             Programming"
+            "Devops",
+            "Programming"
         ],
         "firstName": "Johnny",
         "lastName": "DEPP",
@@ -148,6 +171,9 @@ matches:
 
 [
     {
+            "applicantId": "5c7eeb045555022718b84b01",
+            "positionId": "5c7ee40753a0c7268062a682"
+            "recruiterId": ""
     }
 ]
 ```

@@ -1,7 +1,7 @@
 const Match = require('../models/matchModel.js');
 const Position = require('../models/positionModel.js');
 const Recruiter = require('../models/recruiterModel.js');
-
+const matching = require('../utils/matchingUtils.js');
 // Create a new Match
 exports.create = (req, res) => {
     // Validate request
@@ -117,15 +117,36 @@ exports.delete = (req, res) => {
     });
 };
 
-// Retrieve matching recruiters regarding the skills
-exports.findMatchingRecruiters= (req, res) => {
-        Position.find()
-        .then(matches => {
-            res.send(matches);
-        }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving positions."
-        });
-    });
-};
+// Retrieve matching recruiters regarding the skills.
+// The added value "score" in their documents allow for sorting by element on Front-End.
+exports.findMatchingRecruiters = async (req, res, next) => {
+    try {
+        // Declare promise
+        var myPromise = () => {
+            return new Promise((resolve, reject) => {
+                // Retrieve recruiters data.
+                Recruiter.find()
+                    .then(function (recruitersTable) {
+                        Match.findById(req.params.matchId)
+                            .then(function (matchTable) {
+                                Position.findById(matchTable.positionId)
+                                    .then(function (positionTable) {
+                                        result = matching.matchingScoreRecruitersTable(recruitersTable, positionTable);
+                                        console.log(result);
+                                        resolve(result);
+                                    });
+                            });
+                    });
+            });
+        };
 
+        //await myPromise
+        var result = await myPromise();
+        //continue execution
+        res.json(result);
+
+
+    } catch (e) {
+        next(e)
+    }
+};

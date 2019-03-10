@@ -20,7 +20,12 @@ const RecruiterSchema = mongoose.Schema({
         trim: true
     },
     skills: [String],
-    seniority: Number
+    seniority: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    matchingScore: Number
 });
 
 // Export the Position model

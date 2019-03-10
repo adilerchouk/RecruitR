@@ -17,5 +17,5 @@ module.exports = (app) => {
     app.delete('/matches/:matchId', matches.delete);
 
     // Retrieve matching recruiters regarding the skills
-    app.get('/matches/:matchId/relevantRecruiters', matches.findMatchingRecruiters);
+    app.get('/matches/:matchId/matchingRecruiters', matches.findMatchingRecruiters);
 };
