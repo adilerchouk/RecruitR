@@ -151,7 +151,8 @@ recruiters:
         ],
         "email": "patricktimsit@company.com",
         "firstName": "Patrick",
-        "lastName": "TIMSIT"
+        "lastName": "TIMSIT",
+        "seniority": 0
     },
     {
         "skills": [
@@ -161,7 +162,8 @@ recruiters:
         ],
         "firstName": "Johnny",
         "lastName": "DEPP",
-        "email": "johnnydepp@company.com"
+        "email": "johnnydepp@company.com",
+        "seniority": 0
         }
 ]
 ```
