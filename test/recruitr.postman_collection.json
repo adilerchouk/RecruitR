@@ -18,6 +18,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -49,8 +54,8 @@
 								"type": "text"
 							},
 							{
-								"key": "api_key",
-								"value": "1234",
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
 								"type": "text"
 							}
 						],
@@ -59,14 +64,14 @@
 							"raw": "{\n\t\"description\":\"A data scientist position\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/positions/5c7ee30f53a0c7268062a681",
+							"raw": "localhost:3000/positions/5c7ee2f453a0c7268062a67f",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"positions",
-								"5c7ee30f53a0c7268062a681"
+								"5c7ee2f453a0c7268062a67f"
 							]
 						}
 					},
@@ -76,7 +81,13 @@
 					"name": "positions/{positionId}_Get",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -99,7 +110,13 @@
 					"name": "positionsGet",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -121,7 +138,13 @@
 					"name": "positions/{positionId}_Delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -155,6 +178,11 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -178,7 +206,13 @@
 					"name": "applicants/{applicantId}_Get",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -201,7 +235,13 @@
 					"name": "applicantsGet",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -223,7 +263,13 @@
 					"name": "applicants/{applicantId}_Del",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -251,6 +297,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
 								"type": "text"
 							}
 						],
@@ -310,7 +361,13 @@
 					"name": "recruitersGet",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -332,7 +389,13 @@
 					"name": "recruiter/{recruiterId}_Get",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -355,7 +418,13 @@
 					"name": "recruiters/{recruiterId}_Del",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -383,6 +452,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
 								"type": "text"
 							}
 						],
@@ -413,7 +487,13 @@
 					"name": "matchesGet",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -441,6 +521,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -464,7 +549,13 @@
 					"name": "matches/{matcheId}_Update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -487,7 +578,13 @@
 					"name": "matches/{matchesId}_Get",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -510,7 +607,13 @@
 					"name": "matches/{matchId}_Del",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -531,9 +634,33 @@
 				},
 				{
 					"name": "matches/{matchId}/relevantRecruiters_Get",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8f4ae3ba-3c8a-41fa-a717-882422d50435",
+								"exec": [
+									"//postman.setEnvironmentVariable('timestampHeader',new Date().toUTCString());",
+									"var moment = require('moment')",
+									"pm.globals.set(\"timestamp\", moment().utc())",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "kPYRCC579HzwQjuKZwRd",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""

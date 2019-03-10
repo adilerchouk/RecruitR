@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const Config = require('./config/config.js');
 
 // Create express app
 const app = express();
@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Configuring the database
-const dbConfig = require('./config/config.js');
 const mongoose = require('mongoose');
 // Settings to avoid depreciation warnings
 mongoose.set('useFindAndModify', false);
@@ -20,7 +19,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(dbConfig.url, {
+mongoose.connect(Config.url, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");
@@ -32,6 +31,16 @@ mongoose.connect(dbConfig.url, {
 // Define a simple route
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to RecruitR application."});
+});
+
+// Use api-key authorization for following routes.
+app.use((req, res, next) => {
+    const apiKey = req.get('API-Key');
+    if (!apiKey || apiKey !== Config.apiKey) {
+        res.status(401).json({error: 'Unauthorized, wrong API-key'})
+    } else {
+        next()
+    }
 });
 
 // Define routes
