@@ -14,7 +14,7 @@ const matchingString = exports.matchingStrings = (stringArray1,stringArray2) => 
     return matchingStrings;
 };
 
-// Function to get the score of matching skills. @todo
+// Function to get the score of matching skills.
 const matchingSkillsScore = exports.matchingSkillsScore = (recruiterSkills, positionSkills) => {
     return (matchingString(recruiterSkills,positionSkills)/positionSkills.length)*matchingConfig.skills;
 };

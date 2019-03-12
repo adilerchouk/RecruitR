@@ -11,7 +11,7 @@ const seniority = 0.10;
 // Setting up apiKey for API Key
 const apiKey = 'kPYRCC579HzwQjuKZwRd';
 
-// Database config
+// Config export
 module.exports = {
     url: 'mongodb://localhost:27017/recruitR_DB',
     random,

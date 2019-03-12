@@ -40,7 +40,7 @@ const random = 0.20;
 const skills = 0.70;
 const seniority = 0.10;
 
-// Database config
+// Config export
 module.exports = {
     url: 'mongodb://localhost:27017/recruitR_DB',
     random,
